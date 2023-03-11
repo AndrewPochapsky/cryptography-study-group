@@ -1,4 +1,4 @@
-use std::ops::{Add, Neg, Rem};
+use std::ops::{Add, Neg};
 
 use num_bigint::{BigInt, BigUint, ToBigInt};
 use num_traits::{Num, Zero};
@@ -142,7 +142,7 @@ impl Add for Point {
         } else if rhs == -self.clone() {
             return Point::new(self.curve, None, None);
         }
-        let (inv_l, lambda) = if self == rhs {
+        let (_inv_l, lambda) = if self == rhs {
             if self.y == Some(Zero::zero()) {
                 return Point::new(self.curve, None, None);
             }

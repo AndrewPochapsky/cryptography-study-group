@@ -1,7 +1,7 @@
 #[cfg(test)]
 pub mod testing;
 
-use aes::Aes256;
+
 use openssl::{
     error::ErrorStack,
     symm::{decrypt, encrypt, Cipher},
@@ -63,12 +63,12 @@ pub fn verify_pkcs_padding(blocksize: u8, input: &[u8]) {
 mod tests {
     use aes::cipher::generic_array::GenericArray;
     use aes::cipher::typenum::U16;
-    use aes::cipher::{BlockDecrypt, BlockEncrypt, KeyInit};
-    use aes::{Aes128, Aes256, Block};
+    use aes::cipher::{BlockDecrypt, KeyInit};
+    use aes::{Aes256};
     use openssl::rsa::{Padding, Rsa};
-    use openssl::symm::{decrypt, encrypt, Cipher};
+    
 
-    use crate::{aes_decrypt, aes_encrypt, des_decrypt, des_encrypt, verify_pkcs_padding};
+    use crate::{aes_decrypt, aes_encrypt, des_encrypt, verify_pkcs_padding};
 
     #[test]
     fn ch3_4() {
